@@ -16,15 +16,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Tamarah Waritimi | Full Stack Developer",
   description:
-    "Full Stack Developer specializing in React, AdonisJS, PostgreSQL, MySQL. Building scalable web applications and modern SaaS platforms.",
+    "Full Stack Developer specializing in React, Node, MySQL. I build scalable web applications and modern SaaS platforms. View projects and hire me.",
 
   keywords: [
     "Full Stack Developer",
     "React Developer",
-    "AdonisJS",
-    "PostgreSQL",
+    "Node.js Developer",
     "MySQL",
-    "Software Engineer Nigeria",
+    "Software Engineer",
   ],
 
   openGraph: {
@@ -50,7 +49,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-screen bg-black text-white">
-        <Sidebar />
         <main className="flex-1">{children}</main>
       </body>
     </html>
