@@ -69,8 +69,7 @@ export default function ContactForm() {
                         p-3 border border-gray-200 rounded-lg
                         transition-all duration-200
                         focus:outline-none
-                        focus:ring-2 focus:ring-black/10
-                        focus:border-black/30
+                        focus:ring-2 focus:ring-foreground/10 focus:border-foreground/40
                         focus:scale-[1.01]
                     "
                     required
@@ -83,8 +82,7 @@ export default function ContactForm() {
                         p-3 border border-gray-200 rounded-lg
                         transition-all duration-200
                         focus:outline-none
-                        focus:ring-2 focus:ring-black/10
-                        focus:border-black/30
+                        focus:ring-2 focus:ring-foreground/10 focus:border-foreground/40
                         focus:scale-[1.01]
                     "
                     required
@@ -97,8 +95,7 @@ export default function ContactForm() {
                         p-3 border border-gray-200 rounded-lg h-40
                         transition-all duration-200
                         focus:outline-none
-                        focus:ring-2 focus:ring-black/10
-                        focus:border-black/30
+                        focus:ring-2 focus:ring-foreground/10 focus:border-foreground/40
                         focus:scale-[1.01]
                     "
                     required
