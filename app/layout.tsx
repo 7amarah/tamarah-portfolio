@@ -25,6 +25,10 @@ export const metadata: Metadata = {
     "Software Engineer",
   ],
 
+  icons: {
+    icon: "/tamarah-favicon.png",
+  },
+
   openGraph: {
     title: "Tamarah Waritimi | Full Stack Developer",
 
