@@ -7,7 +7,8 @@ export default function Hero() {
         <section className="min-h-[85vh] flex flex-col justify-center items-center text-center px-4 sm:px-6">
 
             {/* PROFILE IMAGE */}
-            <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full overflow-hidden shadow-md mb-6">
+            <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden shadow-lg ring-1 ring-gray-200 mb-8 transition-transform duration-300 hover:scale-[1.03]">
+            {/* <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full overflow-hidden shadow-md mb-6"> */}
                 <Image
                     fill
                     priority
@@ -30,7 +31,7 @@ export default function Hero() {
 
             {/* DESCRIPTION */}
             <p className="max-w-md sm:max-w-lg mt-4 text-gray-500 text-sm sm:text-base">
-                I build scalable web applications, APIs, and dashboards with modern
+                I design APIs, build scalable web applications, and dashboards with modern
                 full-stack technologies.
             </p>
 
@@ -39,11 +40,17 @@ export default function Hero() {
 
                 {/* CTA */}
                 <Link
-                    href="#"
+                    href="/contact"
                     className="bg-white text-black px-5 py-2 rounded-xl text-sm sm:text-base hover:scale-105 transition"
                 >
                     Hire Me
                 </Link>
+                {/* <Link
+                    href="#"
+                    className="bg-white text-black px-5 py-2 rounded-xl text-sm sm:text-base hover:scale-105 transition"
+                >
+                    Hire Me
+                </Link> */}
 
                 {/* ICONS */}
                 <div className="flex items-center gap-6 text-2xl sm:text-2xl">
