@@ -3,6 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Light mode accent (Indigo) */
+  --accent-50:  #eef2ff;
+  --accent-100: #e0e7ff;
+  --accent-200: #c7d2fe;
+  --accent-300: #a5b4fc;
+  --accent-400: #818cf8;
+  --accent-500: #6366f1; /* main */
+  --accent-600: #4f46e5;
 }
 
 @theme inline {
@@ -16,6 +25,15 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    /* Dark mode accent (slightly brighter for contrast) */
+    --accent-50:  #1e1b4b;
+    --accent-100: #312e81;
+    --accent-200: #3730a3;
+    --accent-300: #4338ca;
+    --accent-400: #6366f1;
+    --accent-500: #818cf8; /* main in dark */
+    --accent-600: #a5b4fc;
   }
 }
 
