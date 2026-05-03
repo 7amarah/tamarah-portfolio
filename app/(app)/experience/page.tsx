@@ -32,7 +32,7 @@ export default function ExperiencePage() {
                         Experience
                     </h1>
 
-                    <p className="text-gray-600 mt-2 max-w-xl leading-relaxed">
+                    <p className="text-[color:var(--foreground)]/70 mt-2 max-w-xl leading-relaxed">
                         A scroll-driven story of building backend systems, SaaS platforms,
                         and scalable APIs.
                     </p>
@@ -42,12 +42,12 @@ export default function ExperiencePage() {
                 <div ref={containerRef} className="relative ml-3">
 
                     {/* Background timeline line */}
-                    <div className="absolute left-0 top-0 w-px h-full bg-gray-200" />
+                    <div className="absolute left-0 top-0 w-px h-full bg-[color:var(--accent-200)]" />
 
                     {/* Animated progress line (Apple-like feel) */}
                     <motion.div
                         style={{ height: lineHeight }}
-                        className="absolute left-0 top-0 w-px bg-black/60 origin-top"
+                        className="absolute left-0 top-0 w-px bg-[color:var(--accent-500)] origin-top"
                     />
 
                     <div className="space-y-14">
@@ -62,22 +62,27 @@ export default function ExperiencePage() {
                                     ease: "easeOut",
                                     delay: index * 0.05,
                                 }}
-                                className="relative pl-10"
+                                className="
+                                    relative pl-10
+                                    transition-all duration-300
+                                    hover:translate-y-[-2px]
+                                    whileHover={{ scale: 1.01 }}
+                                "
                             >
                                 {/* Soft timeline dot */}
-                                <div className="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-black/70" />
+                                <div className="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-[color:var(--accent-500)] shadow-[0_0_0_4px_var(--accent-50)]" />
 
                                 {/* Role */}
                                 <h2 className="text-xl font-semibold tracking-tight">
                                     {exp.role}
                                 </h2>
 
-                                <p className="text-sm text-gray-500 mt-1">
+                                <p className="text-sm text-[color:var(--foreground)]/60 mt-1">
                                     {exp.company} · {exp.period}
                                 </p>
 
                                 {/* Highlights */}
-                                <ul className="mt-4 space-y-2 text-gray-700 leading-relaxed">
+                                <ul className="mt-4 space-y-2 text-[color:var(--foreground)]/80 leading-relaxed">
                                     {exp.highlights.map((item, i) => (
                                         <motion.li
                                             key={i}
@@ -89,7 +94,7 @@ export default function ExperiencePage() {
                                                 ease: "easeOut",
                                                 delay: i * 0.03,
                                             }}
-                                            className="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-1 before:h-1 before:bg-gray-400 before:rounded-full"
+                                            className="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-1 before:h-1 before:bg-[color:var(--accent-400)] before:rounded-full"
                                         >
                                             {item}
                                         </motion.li>
@@ -112,15 +117,15 @@ export default function ExperiencePage() {
                         Featured Build
                     </h2>
 
-                    <div className="p-6 rounded-xl border border-gray-200 bg-white/70 backdrop-blur-sm">
+                    <div className="p-6 rounded-xl border border-gray-200 border-[color:var(--accent-200)] bg-[color:var(--accent-50)]/60 backdrop-blur-sm">
                         <h3 className="text-lg font-semibold">
                             {projectHighlight.title}
                         </h3>
 
-                        <ul className="mt-3 space-y-2 text-gray-700 leading-relaxed">
+                        <ul className="mt-3 space-y-2 text-[color:var(--foreground)]/80 leading-relaxed">
                             {projectHighlight.highlights.map((item, i) => (
                                 <li key={i} className="pl-4 relative">
-                                    <span className="absolute left-0 top-[10px] w-1 h-1 bg-gray-400 rounded-full" />
+                                    <span className="absolute left-0 top-[10px] w-1 h-1 bg-[color:var(--accent-400)] rounded-full" />
                                     {item}
                                 </li>
                             ))}

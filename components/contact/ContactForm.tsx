@@ -42,7 +42,7 @@ export default function ContactForm() {
             {/* TOAST */}
             {status === "success" && (
                 <div className="absolute -top-14 left-0 right-0 mx-auto w-fit px-4 py-2 rounded-full bg-black text-white text-sm shadow-lg">
-                    Message sent successfully ✨
+                    Message sent successfully!
                 </div>
             )}
 
@@ -67,9 +67,11 @@ export default function ContactForm() {
                     placeholder="Name"
                     className="
                         p-3 border border-gray-200 rounded-lg
+                        focus:ring-(--accent-300)
+                        focus:border-(--accent-500)
                         transition-all duration-200
                         focus:outline-none
-                        focus:ring-2 focus:ring-foreground/10 focus:border-foreground/40
+                        focus:ring-2
                         focus:scale-[1.01]
                     "
                     required
@@ -82,8 +84,9 @@ export default function ContactForm() {
                         p-3 border border-gray-200 rounded-lg
                         transition-all duration-200
                         focus:outline-none
-                        focus:ring-2 focus:ring-foreground/10 focus:border-foreground/40
-                        focus:scale-[1.01]
+                        focus:ring-(--accent-300)
+                        focus:border-(--accent-500)
+                        focus:ring-2 focus:scale-[1.01]
                     "
                     required
                 />
@@ -95,7 +98,8 @@ export default function ContactForm() {
                         p-3 border border-gray-200 rounded-lg h-40
                         transition-all duration-200
                         focus:outline-none
-                        focus:ring-2 focus:ring-foreground/10 focus:border-foreground/40
+                        focus:ring-2 focus:ring-(--accent-300)
+                        focus:border-(--accent-500)
                         focus:scale-[1.01]
                     "
                     required
@@ -105,9 +109,12 @@ export default function ContactForm() {
                     type="submit"
                     disabled={status === "loading"}
                     className="
-                       bg-white text-black
+                        bg-(--accent-500)
+                        text-white
+                        hover:bg-(--accent-600)
+                        transition-all duration-200
                         py-2 rounded-xl
-                        hover:opacity-90 transition
+                        hover:opacity-90
                         disabled:opacity-50
 
                         w-3/5
@@ -117,21 +124,6 @@ export default function ContactForm() {
                 >
                     {status === "loading" ? "Sending..." : "Send Message"}
                 </button>
-
-                {/* <button
-                    type="submit"
-                    disabled={status === "loading"}
-                    className="
-                        bg-white text-black
-                        py-2 rounded-xl
-                        hover:bg-black/90
-                        active:scale-[0.98]
-                        transition-all duration-200
-                        disabled:opacity-50
-                    "
-                >
-                    {status === "loading" ? "Sending..." : "Send Message"}
-                </button> */}
             </form>
         </div>
     );

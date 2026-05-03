@@ -54,13 +54,13 @@ export default function AboutPage() {
                     className="mb-16"
                 >
                     <h1 className="text-3xl font-bold tracking-tight">About Me</h1>
-                    <p className="text-gray-600 mt-2 max-w-xl">
+                    <p className="mt-2 max-w-xl text-[color:var(--foreground)]/70">
                         Full-stack developer with strong frontend foundations, expanding into backend systems and scalable architectures.
                     </p>
                 </motion.div>
 
                 {/* Story */}
-                <div className="space-y-12 max-w-3xl text-gray-700 leading-relaxed">
+                <div className="space-y-12 max-w-3xl text-[color:var(--foreground)]/80 leading-relaxed">
 
                     <motion.p
                         initial={{ opacity: 0, y: 14 }}
@@ -79,9 +79,10 @@ export default function AboutPage() {
                         transition={{ duration: 0.6, delay: 0.1 }}
                     >
                         Today, I work across the stack, with strong experience in
-                        <span className="font-semibold"> React and modern frontend systems</span>,
+                        <span className="font-semibold text-[color:var(--accent-500)]"> React and modern frontend systems</span>,
+
                         while actively building deeper expertise in backend engineering using
-                        <span className="font-semibold"> Node.js (AdonisJS, Express.js) and MySQL</span>.
+                        <span className="font-semibold text-[color:var(--accent-500)]"> Node.js (AdonisJS, Express.js) and MySQL</span>.
                     </motion.p>
 
                     <motion.p
@@ -100,7 +101,7 @@ export default function AboutPage() {
                     <h2 className="text-2xl font-semibold mb-8">Journey</h2>
 
                     <div className="relative ml-3">
-                        <div className="absolute left-0 top-0 w-px h-full bg-gray-200" />
+                        <div className="absolute left-0 top-0 w-px h-full bg-[color:var(--accent-200)]" />
 
                         <div className="space-y-10">
                             {timeline.map((item, index) => (
@@ -111,11 +112,11 @@ export default function AboutPage() {
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                     className="relative pl-8"
                                 >
-                                    <div className="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-black/70" />
+                                    <div className="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-[color:var(--accent-500)] shadow-[0_0_0_4px_var(--accent-50)]" />
 
-                                    <p className="text-sm text-gray-500">{item.year}</p>
+                                    <p className="text-sm text-[color:var(--foreground)]/60">{item.year}</p>
                                     <h3 className="font-semibold">{item.title}</h3>
-                                    <p className="text-gray-600">{item.description}</p>
+                                    <p className="text-[color:var(--foreground)]/70">{item.description}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -133,7 +134,14 @@ export default function AboutPage() {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                                className="px-4 py-2 text-sm rounded-full border border-gray-300 bg-gray-50 text-gray-800 hover:bg-gray-100 transition"
+                                className="
+                                    px-4 py-2 text-sm rounded-full
+                                    border border-[color:var(--accent-200)]
+                                    bg-[color:var(--accent-50)]
+                                    text-[color:var(--foreground)]
+                                    hover:bg-[color:var(--accent-100)]
+                                    transition-all duration-200
+                                "
                             >
                                 {skill}
                             </motion.span>
@@ -152,7 +160,7 @@ export default function AboutPage() {
                         What I’m Currently Focused On
                     </h2>
 
-                    <ul className="space-y-3 text-gray-700">
+                    <ul className="space-y-3 text-[color:var(--foreground)]/80">
                         <li>
                             Strengthening backend engineering skills and system design thinking
                         </li>

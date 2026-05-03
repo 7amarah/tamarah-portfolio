@@ -2,21 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { NAV_ITEMS } from "@/lib/constants";
 import { usePathname } from "next/navigation";
-
+import { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
 
 export default function Sidebar() {
     const pathname = usePathname();
-
-    const isFirstLoad =
-        typeof window !== "undefined" &&
-        !sessionStorage.getItem("dashboard-entered");
-
-    if (typeof window !== "undefined") {
-        sessionStorage.setItem("dashboard-entered", "true");
-    }
+    const [isOpen, setIsOpen] = useState(false);
 
     const isActive = (pathname: string, href: string) => {
         if (href === "/") return pathname === "/";
@@ -24,83 +18,149 @@ export default function Sidebar() {
     };
 
     return (
-        <motion.aside
-            initial={isFirstLoad ? { x: -260, opacity: 0 } : false}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="w-64 bg-zinc-900 p-6 flex flex-col gap-6"
-        >
-            {/* Profile */}
-            <div className="flex flex-col items-center">
-                <div className="relative w-40 h-40 rounded-full overflow-hidden shadow-md mb-3">
-                    <Image
-                        fill
-                        loading="eager"
-                        alt="Tamarah profile"
-                        src="/images/potfolio-img-1.jpeg"
-                        sizes="(max-width: 768px) 120px, 160px"
-                        className="object-cover transition-transform duration-300 hover:scale-110"
+        <>
+            {/* MOBILE TOP BAR */}
+            <div className="lg:hidden flex items-center justify-between px-4 py-4 border-b border-[var(--accent-200)] bg-[var(--background)]">
+                <h2 className="font-semibold">Tamarah</h2>
+
+                <button
+                    onClick={() => setIsOpen(true)}
+                    className="text-[var(--foreground)]"
+                >
+                    <FiMenu size={22} />
+                </button>
+            </div>
+
+            {/* OVERLAY */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setIsOpen(false)}
+                        className="fixed inset-0 bg-black/50 z-40 lg:hidden"
                     />
-                </div>
+                )}
+            </AnimatePresence>
 
-                <h2 className="text-lg font-semibold">Tamarah</h2>
-                <p className="text-sm text-gray-400">Full Stack Developer</p>
-            </div>
+            {/* SIDEBAR / DRAWER */}
+            <AnimatePresence>
+                {(isOpen || typeof window !== "undefined") && (
+                    <motion.aside
+                        initial={{ x: -260 }}
+                        animate={{ x: 0 }}
+                        exit={{ x: -260 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        className="
+                            fixed lg:static
+                            z-50
+                            w-64 h-screen
+                            p-6
+                            flex flex-col gap-6
+                            bg-[var(--background)]
+                            border-r border-[var(--accent-200)]
+                        "
+                    >
+                        {/* CLOSE BUTTON (mobile only) */}
+                        <div className="flex justify-end lg:hidden">
+                            <button onClick={() => setIsOpen(false)}>
+                                <FiX size={22} />
+                            </button>
+                        </div>
 
-            {/* Navigation */}
-            {/* <Navbar /> */}
-            <nav className="relative flex flex-col gap-2">
-                {NAV_ITEMS.map((item) => {
-                    const active = isActive(pathname, item.href);
-
-                    return (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className="relative px-3 py-2 rounded-lg"
-                        >
-                            {/* ANIMATED BACKGROUND PILL */}
-                            {active && (
-                                <motion.span
-                                    layoutId="active-pill"
-                                    className="absolute inset-0 bg-white rounded-lg z-0"
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 500,
-                                        damping: 30,
-                                    }}
+                        {/* PROFILE */}
+                        <div className="flex flex-col items-center">
+                            <div className="
+                                relative w-28 h-28 rounded-full overflow-hidden mb-3
+                                ring-2 ring-[var(--accent-300)]
+                            ">
+                                <Image
+                                    fill
+                                    alt="Tamarah profile"
+                                    src="/images/potfolio-img-1.jpeg"
+                                    className="object-cover"
                                 />
-                            )}
+                            </div>
 
-                            {/* CONTENT */}
-                            <span
-                                className={`relative z-10 flex items-center gap-2 text-sm transition-colors ${active ? "text-black font-medium" : "text-gray-300"
-                                    }`}
+                            <h2 className="text-lg font-semibold">
+                                Tamarah
+                            </h2>
+
+                            <p className="text-sm text-[var(--foreground)]/60">
+                                Full Stack Developer
+                            </p>
+                        </div>
+
+                        {/* NAV */}
+                        <nav className="flex flex-col gap-2">
+                            {NAV_ITEMS.map((item) => {
+                                const active = isActive(pathname, item.href);
+
+                                return (
+                                    <Link
+                                        key={item.href}
+                                        href={item.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className="relative px-3 py-2 rounded-lg"
+                                    >
+                                        {active && (
+                                            <motion.span
+                                                layoutId="active-pill"
+                                                className="
+                                                    absolute inset-0
+                                                    bg-[var(--accent-500)]
+                                                    rounded-lg
+                                                    z-0
+                                                "
+                                            />
+                                        )}
+
+                                        <span
+                                            className={`
+                                                relative z-10 text-sm
+                                                ${active
+                                                    ? "text-white font-medium"
+                                                    : "text-[var(--foreground)]/70"}
+                                            `}
+                                        >
+                                            {item.label}
+                                        </span>
+                                    </Link>
+                                );
+                            })}
+                        </nav>
+
+                        {/* ACTIONS */}
+                        <div className="mt-auto flex flex-col gap-2">
+                            <a
+                                href="https://drive.google.com/uc?export=download&id=1A2_r93u4JYEURb3TK0nhKLjSsHu_EG8t"
+                                className="
+                                    bg-[var(--accent-500)]
+                                    text-white text-center py-2 rounded-xl
+                                    hover:opacity-90 transition
+                                "
                             >
-                                {item.label}
-                            </span>
-                        </Link>
-                    );
-                })}
-            </nav>
+                                Download Resume
+                            </a>
 
-            {/* Resume */}
-            <div className="mt-auto flex flex-col gap-2">
-                <a
-                    href="https://drive.google.com/uc?export=download&id=1A2_r93u4JYEURb3TK0nhKLjSsHu_EG8t"
-                    className="bg-white text-black text-center py-2 rounded-xl"
-                >
-                    Download Resume
-                </a>
-
-                <a
-                    href="https://drive.google.com/file/d/1A2_r93u4JYEURb3TK0nhKLjSsHu_EG8t/view"
-                    target="_blank"
-                    className="text-center border py-2 rounded-xl"
-                >
-                    View Resume
-                </a>
-            </div>
-        </motion.aside>
+                            <a
+                                href="https://drive.google.com/file/d/1A2_r93u4JYEURb3TK0nhKLjSsHu_EG8t/view"
+                                target="_blank"
+                                className="
+                                    text-center py-2 rounded-xl
+                                    border border-[var(--accent-300)]
+                                    text-[var(--foreground)]
+                                    hover:border-[var(--accent-500)]
+                                    transition
+                                "
+                            >
+                                View Resume
+                            </a>
+                        </div>
+                    </motion.aside>
+                )}
+            </AnimatePresence>
+        </>
     );
 }

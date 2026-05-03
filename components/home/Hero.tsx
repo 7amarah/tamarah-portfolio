@@ -7,58 +7,73 @@ export default function Hero() {
         <section className="min-h-[85vh] flex flex-col justify-center items-center text-center px-4 sm:px-6">
 
             {/* PROFILE IMAGE */}
-            <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden shadow-lg ring-1 ring-gray-200 mb-8 transition-transform duration-300 hover:scale-[1.03]">
-            {/* <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full overflow-hidden shadow-md mb-6"> */}
+            <div className="
+                relative
+                w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56
+                rounded-full overflow-hidden
+                shadow-lg
+                ring-1 ring-[var(--accent-200)]
+                bg-[var(--accent-50)]
+                mb-8
+                transition-all duration-300
+                hover:scale-[1.03]
+            ">
                 <Image
                     fill
                     priority
                     alt="Tamarah profile"
                     src="/images/potfolio-img-1.jpeg"
-                    sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 160px"
+                    sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 224px"
                     className="object-cover transition-transform duration-300 hover:scale-110"
                 />
             </div>
 
             {/* HEADLINE */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[var(--foreground)]">
                 Hey, I&apos;m Tamarah
             </h1>
 
             {/* SUBTITLE */}
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 mt-2">
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl text-[var(--foreground)]/60 mt-2">
                 Full Stack Developer (React • NodeJS • MySQL)
             </h2>
 
             {/* DESCRIPTION */}
-            <p className="max-w-md sm:max-w-lg mt-4 text-gray-500 text-sm sm:text-base">
+            <p className="max-w-md sm:max-w-lg mt-4 text-[var(--foreground)]/70 text-sm sm:text-base">
                 I design APIs, build scalable web applications, and dashboards with modern
                 full-stack technologies.
             </p>
 
-            {/* SOCIAL LINKS */}
+            {/* SOCIAL + CTA */}
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-8">
 
                 {/* CTA */}
                 <Link
                     href="/contact"
-                    className="bg-white text-black px-5 py-2 rounded-xl text-sm sm:text-base hover:scale-105 transition"
+                    className="
+                        px-6 py-2 rounded-xl text-sm sm:text-base font-medium
+                        bg-[var(--accent-500)]
+                        text-white
+                        shadow-sm
+                        hover:shadow-md hover:-translate-y-0.5
+                        active:scale-95
+                        transition-all duration-200
+                    "
                 >
                     Hire Me
                 </Link>
-                {/* <Link
-                    href="#"
-                    className="bg-white text-black px-5 py-2 rounded-xl text-sm sm:text-base hover:scale-105 transition"
-                >
-                    Hire Me
-                </Link> */}
 
                 {/* ICONS */}
-                <div className="flex items-center gap-6 text-2xl sm:text-2xl">
+                <div className="flex items-center gap-6 text-2xl">
 
                     <Link
                         href="https://github.com/7amarah"
                         target="_blank"
-                        className="text-gray-400 hover:text-white transition transform hover:scale-110"
+                        className="
+                            text-[var(--foreground)]/60
+                            hover:text-[var(--accent-500)]
+                            transition transform hover:scale-110
+                        "
                     >
                         <FaGithub title="GitHub" />
                     </Link>
@@ -66,7 +81,11 @@ export default function Hero() {
                     <Link
                         href="https://www.linkedin.com/in/tamarah-waritimi-4850bb111"
                         target="_blank"
-                        className="text-gray-400 hover:text-white transition transform hover:scale-110"
+                        className="
+                            text-[var(--foreground)]/60
+                            hover:text-[var(--accent-500)]
+                            transition transform hover:scale-110
+                        "
                     >
                         <FaLinkedin title="LinkedIn" />
                     </Link>
@@ -74,10 +93,15 @@ export default function Hero() {
                     <Link
                         href="https://x.com/7amar4h_w?s=21"
                         target="_blank"
-                        className="text-gray-400 hover:text-white transition transform hover:scale-110"
+                        className="
+                            text-[var(--foreground)]/60
+                            hover:text-[var(--accent-500)]
+                            transition transform hover:scale-110
+                        "
                     >
                         <FaXTwitter title="Twitter" />
                     </Link>
+
                 </div>
             </div>
         </section>

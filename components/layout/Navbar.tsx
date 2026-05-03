@@ -14,7 +14,12 @@ export default function Navbar() {
     };
 
     return (
-        <header className="sticky top-0 z-50 backdrop-blur-md bg-black/60 border-b border-white/10">
+        <header className="
+            sticky top-0 z-50
+            backdrop-blur-md
+            bg-[var(--accent-50)]/70
+            border-b border-[var(--accent-200)]
+        ">
             <div className="w-full px-4 sm:px-6 py-4">
 
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -28,15 +33,24 @@ export default function Navbar() {
                                 <Link
                                     key={item.href}
                                     href={item.href}
-                                    className="relative text-sm text-gray-300 hover:text-white transition"
+                                    className={`
+                                        relative text-sm transition
+                                        ${active
+                                            ? "text-[var(--accent-600)] font-medium"
+                                            : "text-[var(--foreground)]/60 hover:text-[var(--foreground)]"
+                                        }
+                                    `}
                                 >
                                     {item.label}
 
-                                    {/* 🔥 MOTION UNDERLINE */}
+                                    {/* ACTIVE UNDERLINE */}
                                     {active && (
                                         <motion.span
                                             layoutId="nav-underline"
-                                            className="absolute left-0 -bottom-1 h-[2px] w-full bg-white"
+                                            className="
+                                                absolute left-0 -bottom-1 h-[2px] w-full
+                                                bg-[var(--accent-500)]
+                                            "
                                             transition={{
                                                 type: "spring",
                                                 stiffness: 500,
@@ -51,20 +65,42 @@ export default function Navbar() {
 
                     {/* ACTION BUTTONS */}
                     <div className="flex flex-row items-center gap-3">
+
+                        {/* Download */}
                         <a
                             href="https://drive.google.com/uc?export=download&id=1A2_r93u4JYEURb3TK0nhKLjSsHu_EG8t"
-                            className="inline-flex items-center justify-center text-sm text-black bg-white px-4 py-1.5 rounded-lg whitespace-nowrap hover:opacity-90 transition"
+                            className="
+                                inline-flex items-center justify-center
+                                text-sm font-medium
+                                px-4 py-1.5 rounded-lg whitespace-nowrap
+                                bg-[var(--accent-500)]
+                                text-white
+                                shadow-sm
+                                hover:shadow-md hover:-translate-y-0.5
+                                transition-all duration-200
+                            "
                         >
                             Download CV
                         </a>
 
+                        {/* View */}
                         <a
                             href="https://drive.google.com/file/d/1A2_r93u4JYEURb3TK0nhKLjSsHu_EG8t/view"
                             target="_blank"
-                            className="inline-flex items-center justify-center text-sm text-white border border-gray-600 px-4 py-1.5 rounded-lg whitespace-nowrap hover:border-white transition"
+                            className="
+                                inline-flex items-center justify-center
+                                text-sm font-medium
+                                px-4 py-1.5 rounded-lg whitespace-nowrap
+                                border border-[var(--accent-300)]
+                                text-[var(--foreground)]
+                                hover:border-[var(--accent-500)]
+                                hover:text-[var(--accent-600)]
+                                transition
+                            "
                         >
                             View CV
                         </a>
+
                     </div>
 
                 </div>
