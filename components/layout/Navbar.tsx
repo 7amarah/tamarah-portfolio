@@ -1,17 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import { FiMenu } from "react-icons/fi";
 import { NAV_ITEMS } from "@/lib/constants";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 
-export default function Navbar() {
+export default function Navbar({
+    setIsOpen,
+}: {
+    setIsOpen: (val: boolean) => void;
+}) {
     const pathname = usePathname();
 
     const isActive = (href: string) => {
         if (href === "/") return pathname === "/";
-        return pathname.startsWith(href);
+        return pathname === href || pathname.startsWith(href + "/");
     };
+
+    const isHome = pathname === "/";
 
     return (
         <header className="
@@ -24,6 +30,15 @@ export default function Navbar() {
 
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
+                    {!isHome && (
+                        <button
+                            onClick={() => setIsOpen?.(true)}
+                            className="lg:hidden text-[var(--foreground)]"
+                        >
+                            <FiMenu size={22} />
+                        </button>
+                    )}
+
                     {/* NAV LINKS */}
                     <nav className="flex flex-wrap justify-start gap-6">
                         {NAV_ITEMS.map((item) => {
@@ -34,30 +49,14 @@ export default function Navbar() {
                                     key={item.href}
                                     href={item.href}
                                     className={`
-                                        relative text-sm transition
+                                        inline-block text-sm transition-all duration-200
                                         ${active
-                                            ? "text-[var(--accent-600)] font-medium"
+                                            ? "text-[var(--accent-600)] font-semibold scale-105 drop-shadow-[0_0_6px_var(--accent-500)]"
                                             : "text-[var(--foreground)]/60 hover:text-[var(--foreground)]"
                                         }
                                     `}
                                 >
                                     {item.label}
-
-                                    {/* ACTIVE UNDERLINE */}
-                                    {active && (
-                                        <motion.span
-                                            layoutId="nav-underline"
-                                            className="
-                                                absolute left-0 -bottom-1 h-[2px] w-full
-                                                bg-[var(--accent-500)]
-                                            "
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 500,
-                                                damping: 30,
-                                            }}
-                                        />
-                                    )}
                                 </Link>
                             );
                         })}
