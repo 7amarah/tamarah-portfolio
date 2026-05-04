@@ -155,7 +155,6 @@ export default function ProjectCard({ project }: { project: Project }) {
                     project.restricted && (
                         <p className="text-xs text-[var(--foreground)]/50 italic" >
                             🔒 Enterprise system — access restricted.
-                            Architecture and implementation available on request.
                         </p>
                     )
                 }
