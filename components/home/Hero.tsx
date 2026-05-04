@@ -40,7 +40,7 @@ export default function Hero() {
 
             {/* DESCRIPTION */}
             <p className="max-w-md sm:max-w-lg mt-4 text-[var(--foreground)]/70 text-sm sm:text-base">
-                I design APIs, build scalable web applications, and dashboards with modern
+                I design APIs, and build scalable web applications with modern
                 full-stack technologies.
             </p>
 
