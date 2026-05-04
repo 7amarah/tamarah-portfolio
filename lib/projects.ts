@@ -8,9 +8,9 @@ export const PROJECTS = [
             "A full-stack SaaS platform built for hotel operations, handling bookings, payments, and inventory across multiple business workflows.",
 
         highlights: [
+            "Implemented POS-style sales module with item selection, cart management, and order checkout flow",
             "Designed scalable backend architecture using AdonisJS",
             "Built booking engine with real-time availability logic",
-            "Implemented secure payment flows and verification",
             "Optimized database queries for performance",
             "Handled complex relational data with MySQL",
         ],
@@ -27,6 +27,8 @@ export const PROJECTS = [
             live: "https://staging-hms.atslng.com/",
             github: null,
         },
+
+        image: "/images/hms-saas-pos-ui.png",
 
         restricted: true,
     },
