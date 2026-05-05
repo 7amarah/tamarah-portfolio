@@ -16,7 +16,7 @@ export const PROJECTS = [
         ],
 
         impact: [
-            "Reduced manual hotel operations by ~70%",
+            "Improved operational efficiency by digitizing core hotel workflows",
             "Improved booking processing speed",
             "Enabled real-time inventory tracking",
         ],
